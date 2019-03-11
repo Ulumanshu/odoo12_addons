@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_zuvinimas_regions,zuvinimas_regions,model_zuvinimas_regions,base.group_user,1,1,1,1
+access_zuvinimas_lakes,zuvinimas_lakes,model_zuvinimas_lakes,base.group_user,1,1,1,1
+access_zuvinimas_releases,zuvinimas_releases,model_zuvinimas_releases,base.group_user,1,1,1,1
+access_zuvinimas_species,zuvinimas_species,model_zuvinimas_species,base.group_user,1,1,1,1
+access_zuvinimas_species_age,zuvinimas_species_age,model_zuvinimas_species_age,base.group_user,1,1,1,1
