@@ -1,0 +1,292 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* zuvinimas
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-23 14:30+0000\n"
+"PO-Revision-Date: 2019-03-23 14:30+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__age
+msgid "Age Group Scientific Marking"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__area
+msgid "Area In Hectares"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__water_body_ids
+msgid "Belonging Water Bodies"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__water_body_id
+msgid "Concerned Waterbody"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__date
+msgid "Date Of Release"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.fish_age_groups
+msgid "Fish Age Groups"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.menu_root
+msgid "Fish Releases"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__species_id
+#: model:ir.ui.menu,name:zuvinimas.fish_species
+msgid "Fish Species"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__age_group_id
+msgid "Fish Species Age Group"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.fish_details
+msgid "Fishes"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__id
+msgid "ID"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__image
+msgid "Lake Image"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.lakes
+msgid "Lakes"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__latin_name
+msgid "Latin Name"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__name
+msgid "Name Of Water Body"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__name
+msgid "Region"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__image
+msgid "Region Image"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.regions
+msgid "Regions"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__release_count
+msgid "Release Count"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__quantity
+msgid "Release Quantity"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.releases
+#: model_terms:ir.ui.view,arch_db:zuvinimas.lakes_form
+#: model_terms:ir.ui.view,arch_db:zuvinimas.species_form
+msgid "Releases"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__releases_ids
+msgid "Releases Into Waterbody"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__releases_ids
+msgid "Releases Of Species"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__name
+msgid "Species Age Group"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__image
+msgid "Species Image"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__name
+msgid "Species Name"
+msgstr ""
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.lakes_form
+#: model_terms:ir.ui.view,arch_db:zuvinimas.regions_form
+#: model_terms:ir.ui.view,arch_db:zuvinimas.species_form
+msgid "Tree String"
+msgstr ""
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.regions_form
+msgid "Waterbodies"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__water_body_count
+msgid "Waterbody Count"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__region_id
+msgid "Waterbody Region"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.actions.act_window,name:zuvinimas.species_age_action_window
+msgid "fish age group window"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.actions.act_window,name:zuvinimas.lakes_action_window
+msgid "fish release lakes window"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.actions.act_window,name:zuvinimas.regions_action_window
+msgid "fish release regions window"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.actions.act_window,name:zuvinimas.releases_action_window
+msgid "fish releases window"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.actions.act_window,name:zuvinimas.species_action_window
+msgid "fish species window"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_lakes
+msgid "zuvinimas.lakes"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_main
+msgid "zuvinimas.main"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_regions
+msgid "zuvinimas.regions"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_releases
+msgid "zuvinimas.releases"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_species
+msgid "zuvinimas.species"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_species_age
+msgid "zuvinimas.species.age"
+msgstr ""
+

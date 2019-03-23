@@ -1,0 +1,90 @@
+<odoo>
+  <data>
+  
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="zuvinimas.species_list">
+        <field name="name">zuvinimas fish species list</field>
+        <field name="model">zuvinimas.species</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="latin_name"/>
+            </tree>
+        </field>
+    </record>
+    
+     <!-- explicit form view definition -->
+    
+    <record model="ir.ui.view" id="zuvinimas.species_form">
+        <field name="name">zuvinimas species form</field>
+        <field name="model">zuvinimas.species</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                     <div class="oe_title">
+                         <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <field name="image" widget="image" class="zstripel"/>
+                    <group>
+                        <field name="latin_name"/>
+                    </group>
+                    <notebook>
+                        <page string="Releases">
+                            <field name="releases_ids">
+                                <tree string="Releases">
+                                    <field name="date"/>
+                                    <field name="water_body_id"/>
+                                    <field name="species_id" readonly="1"/>
+                                    <field name="age_group_id"/>
+                                    <field name="quantity" sum="Total In Thousands"/>
+                                </tree>
+                                <form>
+                                    <div class="oe_title">
+                                         <h1>
+                                            <field name="date"/>
+                                        </h1>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                             <group>
+                                                <field name="water_body_id"/>
+                                            </group>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <group>
+                                                <field name="species_id" readonly="1"/>
+                                                <field name="age_group_id"/>
+                                                <field name="quantity"/>
+                                            </group>
+                                        </div>
+                                    </div>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="zuvinimas.species_action_window">
+        <field name="name">fish species window</field>
+        <field name="res_model">zuvinimas.species</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- menu categories -->
+    
+    <menuitem name="Fish Species" id="zuvinimas.fish_species"
+        parent="zuvinimas.fish_details"
+        action="zuvinimas.species_action_window"/>
+    
+  </data>
+</odoo>

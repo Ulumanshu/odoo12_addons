@@ -1,0 +1,300 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-03-23 16:50+0000\n"
+"PO-Revision-Date: 2019-03-23 18:56+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: lt_LT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__age
+msgid "Age Group Scientific Marking"
+msgstr "Amžiaus grupės mokslinis žymuo"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__area
+msgid "Area In Hectares"
+msgstr "Plotas Hektarais"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__water_body_ids
+msgid "Belonging Water Bodies"
+msgstr "Vandens Telkiniai"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__water_body_id
+msgid "Concerned Waterbody"
+msgstr "Telkinys"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__create_uid
+msgid "Created by"
+msgstr "Sukurta vartotojo"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__create_date
+msgid "Created on"
+msgstr "Sukūrimo data"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__date
+msgid "Date Of Release"
+msgstr "Žuvinimo data"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__display_name
+msgid "Display Name"
+msgstr "Pavadinimas"
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.fish_age_groups
+msgid "Fish Age Groups"
+msgstr "Žuvų amžiaus grupės"
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.menu_root
+msgid "Fish Releases"
+msgstr "Žuvinimai"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__species_id
+#: model:ir.ui.menu,name:zuvinimas.fish_species
+msgid "Fish Species"
+msgstr "Žuvų rūšys"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__age_group_id
+msgid "Fish Species Age Group"
+msgstr "Rušių amžiaus grupės"
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.fish_details
+msgid "Fishes"
+msgstr "Žuvys"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__id
+msgid "ID"
+msgstr "ID"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__image
+msgid "Lake Image"
+msgstr "Vandens telkinio paveikslėlis"
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.lakes
+msgid "Lakes"
+msgstr "Vandens telkiniai"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age____last_update
+msgid "Last Modified on"
+msgstr "Paskutinį kartą modifikuota"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__write_uid
+msgid "Last Updated by"
+msgstr "Paskutinį kartą atnaujinta vartotojo"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__write_date
+msgid "Last Updated on"
+msgstr "Paskutinio atnaujinimo data"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__latin_name
+msgid "Latin Name"
+msgstr "Lotyniškas pavadinimas"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__name
+msgid "Name Of Water Body"
+msgstr "Vandens telkinio pavadinimas"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__name
+msgid "Region"
+msgstr "Rajonas"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__image
+msgid "Region Image"
+msgstr "Rajono paveikslėlis"
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.regions
+msgid "Regions"
+msgstr "Rajonai"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__release_count
+msgid "Release Count"
+msgstr "Žuvinimų skaičius"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__quantity
+msgid "Release Quantity"
+msgstr "Įžuvintas kiekis"
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.releases
+#: model_terms:ir.ui.view,arch_db:zuvinimas.lakes_form
+#: model_terms:ir.ui.view,arch_db:zuvinimas.regions_form
+#: model_terms:ir.ui.view,arch_db:zuvinimas.species_form
+msgid "Releases"
+msgstr "Žuvinimai"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__releases_ids
+msgid "Releases Into Waterbody"
+msgstr "Vandens telkinio žuvinimai"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__releases_ids
+msgid "Releases Of Species"
+msgstr "Rūšių žuvinimai"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__name
+msgid "Species Age Group"
+msgstr "Rūšių amžiaus grupės"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__image
+msgid "Species Image"
+msgstr "Rūšies paveiksliukas"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__name
+msgid "Species Name"
+msgstr "Rūšies pavadinimas"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.lakes_form
+#: model_terms:ir.ui.view,arch_db:zuvinimas.regions_form
+#: model_terms:ir.ui.view,arch_db:zuvinimas.releases_list
+#: model_terms:ir.ui.view,arch_db:zuvinimas.species_form
+msgid "Total In Thousands"
+msgstr "Viso tūkstančių"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.lakes_form
+#: model_terms:ir.ui.view,arch_db:zuvinimas.regions_form
+#: model_terms:ir.ui.view,arch_db:zuvinimas.species_form
+msgid "Tree String"
+msgstr ""
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.regions_form
+msgid "Waterbodies"
+msgstr "Vandends telkiniai"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__water_body_count
+msgid "Waterbody Count"
+msgstr "Vandens telkinių skaičius"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__region_id
+msgid "Waterbody Region"
+msgstr "Vandens telkinio rajonas"
+
+#. module: zuvinimas
+#: model:ir.actions.act_window,name:zuvinimas.species_age_action_window
+msgid "fish age group window"
+msgstr "Žuvų amžiaus grupės"
+
+#. module: zuvinimas
+#: model:ir.actions.act_window,name:zuvinimas.lakes_action_window
+msgid "fish release lakes window"
+msgstr "Vandens telkiniai"
+
+#. module: zuvinimas
+#: model:ir.actions.act_window,name:zuvinimas.regions_action_window
+msgid "fish release regions window"
+msgstr "Rajonai"
+
+#. module: zuvinimas
+#: model:ir.actions.act_window,name:zuvinimas.releases_action_window
+msgid "fish releases window"
+msgstr "Žuvinimai"
+
+#. module: zuvinimas
+#: model:ir.actions.act_window,name:zuvinimas.species_action_window
+msgid "fish species window"
+msgstr "Žuvų rūšys"
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_lakes
+msgid "zuvinimas.lakes"
+msgstr "vandens telkinys"
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_main
+msgid "zuvinimas.main"
+msgstr ""
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_regions
+msgid "zuvinimas.regions"
+msgstr "regionas"
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_releases
+msgid "zuvinimas.releases"
+msgstr "žuvinimas"
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_species
+msgid "zuvinimas.species"
+msgstr "rūšis"
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_species_age
+msgid "zuvinimas.species.age"
+msgstr "amžiaus grupė"

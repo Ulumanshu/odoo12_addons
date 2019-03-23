@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+    
+    <template id="assets_backend" name="zuvinimas assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+             <link rel="stylesheet" href="/zuvinimas/static/src/css/styles.css"/>
+        </xpath>
+    </template>
+    
+    </data>
+</odoo>

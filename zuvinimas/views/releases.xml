@@ -1,0 +1,34 @@
+<odoo>
+  <data>
+  
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="zuvinimas.releases_list">
+        <field name="name">zuvinimas releases list</field>
+        <field name="model">zuvinimas.releases</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="species_id"/>
+                <field name="age_group_id"/>
+                <field name="water_body_id"/>
+                <field name="quantity" sum="Total In Thousands"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="zuvinimas.releases_action_window">
+        <field name="name">fish releases window</field>
+        <field name="res_model">zuvinimas.releases</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <!-- menu categories -->
+    
+    <menuitem name="Releases" id="zuvinimas.releases" parent="zuvinimas.menu_root"
+        action="zuvinimas.releases_action_window"/>
+    
+  </data>
+</odoo>

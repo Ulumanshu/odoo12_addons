@@ -1,0 +1,112 @@
+<odoo>
+  <data>
+  
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="zuvinimas.regions_list">
+        <field name="name">zuvinimas regions list</field>
+        <field name="model">zuvinimas.regions</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="water_body_count"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- explicit form view definition -->
+    
+    <record model="ir.ui.view" id="zuvinimas.regions_form">
+        <field name="name">zuvinimas regions form</field>
+        <field name="model">zuvinimas.regions</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                     <div class="oe_title">
+                         <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <field name="image" widget="image" class="zstripel"/>
+                    <group>
+                        <field name="water_body_count" readonly="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Waterbodies">
+                            <field name="water_body_ids">
+                                <tree string="Tree String">
+                                    <field name="name"/>
+                                    <field name="area"/>
+                                    <field name="release_count" readonly="1"/>
+                                </tree>
+                                <form>
+                                    <div class="oe_title">
+                                         <h1>
+                                            <field name="name"/>
+                                        </h1>
+                                    </div>
+                                    <field name="image" widget="image" class="zstripel"/>
+                                    <group>
+                                        <field name="area"/>
+                                        <field name="release_count" readonly="1"/>
+                                    </group>
+                                    <notebook>
+                                        <page string="Releases">
+                                            <field name="releases_ids">
+                                                <tree string="Releases" create="false">
+                                                    <field name="date"/>
+                                                    <field name="water_body_id" readonly="1"/>
+                                                    <field name="species_id"/>
+                                                    <field name="age_group_id"/>
+                                                    <field name="quantity" sum="Total In Thousands"/>
+                                                </tree>
+                                                <form create="false">
+                                                    <div class="oe_title">
+                                                         <h1>
+                                                            <field name="date"/>
+                                                        </h1>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                             <group>
+                                                                <field name="water_body_id" readonly="1"/>
+                                                            </group>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <group>
+                                                                <field name="species_id"/>
+                                                                <field name="age_group_id"/>
+                                                                <field name="quantity"/>
+                                                            </group>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </field>
+                                        </page>
+                                    </notebook>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="zuvinimas.regions_action_window">
+        <field name="name">fish release regions window</field>
+        <field name="res_model">zuvinimas.regions</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+     <!-- menu categories -->
+    
+    <menuitem name="Regions" id="zuvinimas.regions" parent="zuvinimas.menu_root"
+        action="zuvinimas.regions_action_window"/>
+        
+  </data>
+</odoo>

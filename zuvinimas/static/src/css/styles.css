@@ -1,0 +1,19 @@
+.openerp .zstripe > img {
+height: 160px;
+width: 640px;
+}
+
+.openerp .zstripel > img {
+height: 160px;
+width: 100%;
+}
+
+.openerp .zlandscape > img {
+height: 180px;
+width: 320px;
+}
+
+.openerp .zsquare > img {
+height: 180px;
+width: 180px;
+}

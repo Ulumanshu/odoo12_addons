@@ -25,9 +25,15 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'views/zuvinimas.xml',
+        'security/ir.model.access.csv',
         'views/templates.xml',
+        'views/assets.xml',
+        'views/zuvinimas.xml',
+        'views/regions.xml',
+        'views/lakes.xml',
+        'views/releases.xml',
+        'views/species.xml',
+        'views/age_groups.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

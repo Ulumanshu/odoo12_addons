@@ -1,55 +1,9 @@
 <odoo>
   <data>
   
-    <!--     explicit list view definition -->
+    <!-- explicit list view definition -->
     
-    <record model="ir.ui.view" id="zuvinimas.regions_list">
-        <field name="name">zuvinimas regions list</field>
-        <field name="model">zuvinimas.regions</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-                <field name="water_body_ids" widget="many2many_tags"/>
-            </tree>
-        </field>
-    </record>
-    
-    <record model="ir.ui.view" id="zuvinimas.lakes_list">
-        <field name="name">zuvinimas lakes list</field>
-        <field name="model">zuvinimas.lakes</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-                <field name="region_id"/>
-            </tree>
-        </field>
-    </record>
-    
-    <record model="ir.ui.view" id="zuvinimas.releases_list">
-        <field name="name">zuvinimas releases list</field>
-        <field name="model">zuvinimas.releases</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="date"/>
-                <field name="species_id"/>
-                <field name="age_group_id"/>
-                <field name="water_body_id"/>
-                <field name="quantity"/>
-            </tree>
-        </field>
-    </record>
-    
-    <record model="ir.ui.view" id="zuvinimas.releases_list">
-        <field name="name">zuvinimas fish species list</field>
-        <field name="model">zuvinimas.species</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name"/>
-            </tree>
-        </field>
-    </record>
-    
-    <record model="ir.ui.view" id="zuvinimas.releases_list">
+    <record model="ir.ui.view" id="zuvinimas._list">
         <field name="name">zuvinimas fish species age list</field>
         <field name="model">zuvinimas.species.age</field>
         <field name="arch" type="xml">
@@ -61,30 +15,6 @@
     </record>
 
     <!-- actions opening views on models -->
-    
-    <record model="ir.actions.act_window" id="zuvinimas.regions_action_window">
-      <field name="name">fish release regions window</field>
-      <field name="res_model">zuvinimas.regions</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    
-    <record model="ir.actions.act_window" id="zuvinimas.lakes_action_window">
-      <field name="name">fish release lakes window</field>
-      <field name="res_model">zuvinimas.lakes</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    
-    <record model="ir.actions.act_window" id="zuvinimas.releases_action_window">
-      <field name="name">fish releases window</field>
-      <field name="res_model">zuvinimas.releases</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    
-    <record model="ir.actions.act_window" id="zuvinimas.species_action_window">
-      <field name="name">fish species window</field>
-      <field name="res_model">zuvinimas.species</field>
-      <field name="view_mode">tree,form</field>
-    </record>
     
     <record model="ir.actions.act_window" id="zuvinimas.species_age_action_window">
       <field name="name">fish age group window</field>
@@ -98,16 +28,8 @@
         action="zuvinimas.regions_action_window"/>
     
     <!-- menu categories -->
-    
-    <menuitem name="Regions" id="zuvinimas.regions" parent="zuvinimas.menu_root"
-        action="zuvinimas.regions_action_window"/>
-    <menuitem name="Lakes" id="zuvinimas.lakes" parent="zuvinimas.menu_root"
-        action="zuvinimas.lakes_action_window"/>
-    <menuitem name="Releases" id="zuvinimas.releases" parent="zuvinimas.menu_root"
-        action="zuvinimas.releases_action_window"/>
+   
     <menuitem name="Fishes" id="zuvinimas.fish_details" parent="zuvinimas.menu_root"/>
-    <menuitem name="Fish Species" id="zuvinimas.fish_species" parent="zuvinimas.fish_details"
-        action="zuvinimas.species_action_window"/>
     <menuitem name="Fish Age Groups" id="zuvinimas.fish_age_groups" parent="zuvinimas.fish_details"
         action="zuvinimas.species_age_action_window"/>
         
