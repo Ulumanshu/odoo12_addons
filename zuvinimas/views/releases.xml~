@@ -10,9 +10,12 @@
             <tree>
                 <field name="date"/>
                 <field name="species_id"/>
-                <field name="age_group_id"/>
+                <field
+                    name="age_group_id"
+                    domain="['|', ('species_id', '=', self.species_id), ('base_age_group', '=', True)]"
+                />
                 <field name="water_body_id"/>
-                <field name="quantity"/>
+                <field name="quantity" sum="Total In Thousands"/>
             </tree>
         </field>
     </record>

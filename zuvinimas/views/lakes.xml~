@@ -38,7 +38,7 @@
                     <notebook>
                         <page string="Releases">
                             <field name="releases_ids">
-                                <tree string="Tree String">
+                                <tree string="Releases">
                                     <field name="date"/>
                                     <field name="water_body_id"/>
                                     <field name="species_id"/>
@@ -64,6 +64,28 @@
                                                 <field name="quantity"/>
                                             </group>
                                         </div>
+                                    </div>
+                                </form>
+                            </field>
+                        </page>
+                        <page string="Notes">
+                            <field name="lake_notes"/>
+                        </page>
+                        <page string="Species">
+                            <field name="species_ids"
+                            context="{'domain_location_id': active_id}">
+                                <tree string="Released Species">
+                                    <field name="name"/>
+                                    <field name="release_quantity_count" sum="Total In Thousands"/>
+                                </tree>
+                                <form>
+                                    <div class="oe_title">
+                                         <h1>
+                                            <field name="name"/>
+                                        </h1>
+                                        <group>
+                                            <field name="release_quantity_count"/>
+                                        </group>
                                     </div>
                                 </form>
                             </field>

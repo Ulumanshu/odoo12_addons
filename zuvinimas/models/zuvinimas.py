@@ -2,80 +2,181 @@
 
 from odoo import models, fields, api
 
+def prynt(print_me):
+    import sys
+    print(print_me)
+    sys.stdout.flush()
+
 class zuvinimas(models.Model):
     _name = 'zuvinimas.main'
 
-    
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         self.value2 = float(self.value) / 100
 
 class zuvinimas_regions(models.Model):
     _name = 'zuvinimas.regions'
-     
-    name = fields.Char("Region", required=True, translate=True)
-    image = fields.Binary("Region Image", store=True)
-    water_body_count = fields.Integer('Waterbody Count')
-    water_body_ids = fields.One2many("zuvinimas.lakes", "region_id", "Belonging Water Bodies")
     
-    @api.multi
-    def write(self, vals):
-        res = super(zuvinimas_regions, self).write(vals)
-        if vals.get('water_body_ids'):
-            self.water_body_count = len(self.water_body_ids)
-        return res
-        
     @api.depends('water_body_ids')
-    def body_counter(self):
+    def _count_lakes(self):
         for rec in self:
             rec.water_body_count = len(rec.water_body_ids)
-            
+            area = 0.00
+            for body in rec.water_body_ids:
+                area += body.area
+            rec.total_wb_area = area
+     
+    name = fields.Char("Region", required=True, translate=True)
+    region_notes = fields.Text("Region Notes")
+    image = fields.Binary("Region Image", store=False)
+    water_body_count = fields.Integer('Waterbody Count', compute="_count_lakes")
+    total_wb_area = fields.Float("Total Waterbody Area", compute="_count_lakes")
+    water_body_ids = fields.One2many(
+        "zuvinimas.lakes",
+        "region_id",
+        "Belonging Water Bodies"
+    )
+    
+#    @api.multi
+#    def write(self, vals):
+#        res = super(zuvinimas_regions, self).write(vals)
+#        if vals.get('water_body_ids'):
+#            self.water_body_count = len(self.water_body_ids)
+#        return res
+
 
 class zuvinimas_lakes(models.Model):
     _name = 'zuvinimas.lakes'
-
-    name = fields.Char("Name Of Water Body", required=True, translate=True)
-    image = fields.Binary("Lake Image", store=True)
-    release_count = fields.Integer('Release Count')
-    area = fields.Float("Area In Hectares")
-    region_id = fields.Many2one("zuvinimas.regions", "Waterbody Region", required=True)
-    releases_ids = fields.One2many('zuvinimas.releases', "water_body_id", "Releases Into Waterbody")
-    
-    @api.multi
-    def write(self, vals):
-        res = super(zuvinimas_lakes, self).write(vals)
-        if vals.get('releases_ids'):
-            self.release_count = len(self.releases_ids)
-        return res
     
     @api.depends('releases_ids')
-    def release_counter(self):
+    def _count_releases(self):
         for rec in self:
             rec.release_count = len(rec.releases_ids)
-        
+            
+    @api.depends('releases_ids')
+    def _count_species(self):
+        for rec in self:
+            rset_species = self.env['zuvinimas.species']
+            for release in self.releases_ids:
+                rset_species |= release.species_id
+            rec.species_ids = rset_species
+
+    name = fields.Char("Name Of Water Body", required=True, translate=True)
+    image = fields.Binary("Lake Image", store=False)
+    release_count = fields.Integer('Release Count', compute="_count_releases")
+    area = fields.Float("Area In Hectares")
+    lake_notes = fields.Text("Waterbody Notes")
+    region_id = fields.Many2one("zuvinimas.regions", "Waterbody Region", required=True)
+    releases_ids = fields.One2many(
+        'zuvinimas.releases',
+        "water_body_id",
+        "Releases Into Waterbody"
+    )
+    species_ids = fields.Many2many(
+        'zuvinimas.species',
+        'zuvinimas_lakes_species_rel',
+        'lake_id',
+        'species_id',
+        compute="_count_species"
+    )
+    
+#    @api.multi
+#    def write(self, vals):
+#        res = super(zuvinimas_lakes, self).write(vals)
+#        if vals.get('releases_ids'):
+#            self.release_count = len(self.releases_ids)
+#        return res
 
 class zuvinimas_realeases(models.Model):
     _name = 'zuvinimas.releases'
-
+    _rec_name = 'date'
+     
+    @api.model
+    def _getfilter(self, species=None):
+        domain = []
+        if species:
+            domain.append('|')
+            domain.append(('species_id', '=', species and species.id or None))
+        domain.append(('base_age_group', '=', True))
+        return domain
+    
     date = fields.Date("Date Of Release", required=True)
     species_id = fields.Many2one("zuvinimas.species", "Fish Species", required=True)
-    age_group_id = fields.Many2one("zuvinimas.species.age", "Fish Species Age Group", required=True)
-    water_body_id = fields.Many2one("zuvinimas.lakes", "Concerned Waterbody", required=True)
+    age_group_id = fields.Many2one(
+        "zuvinimas.species.age",
+        "Fish Species Age Group",
+        required=True,
+        domain=_getfilter
+    )
+    water_body_id = fields.Many2one(
+        "zuvinimas.lakes",
+        "Concerned Waterbody",
+        required=True
+    )
+    region_id = fields.Many2one(
+        "zuvinimas.regions",
+        "Waterbody Region",
+        related='water_body_id.region_id'
+    )
     quantity = fields.Float("Release Quantity", required=True)
+    
+    @api.onchange('species_id')
+    def _correct_age_groups(self):
+        for rec in self:
+            res = {}
+            rec.age_group_id = False
+            domain = self._getfilter(self.species_id)
+            res['domain'] = {'age_group_id': domain}
+            return res
     
     
 class zuvinimas_species(models.Model):
     _name = 'zuvinimas.species'
-
+    
+    @api.depends('releases_ids')
+    def _count_releases(self):
+        for rec in self:
+            rec.release_count = len(rec.releases_ids)
+            rec.domain_location_id = self.env.context.get('domain_location_id') or None
+            res = 0.00
+            prynt(rec.domain_location_id)
+            prynt(self.env.context)
+            for release in rec.releases_ids:
+                if rec.domain_location_id:
+                    if release.water_body_id != rec.domain_location_id:
+                        continue
+                res += release.quantity
+            rec.release_quantity_count = res
+            
+    def _filter_by_age(self):
+        for req in self:
+            age_groups = self.env['zuvinimas.species.age'].search(
+                ['|', ('species_id', '=', self.id), ('base_age_group', '=', True)]
+            )
+            req.age_group_ids = age_groups
+    
     name = fields.Char("Species Name", required=True, translate=True)
-    image = fields.Binary("Species Image", store=True)
+    species_notes = fields.Text("Species Notes")
+    image = fields.Binary("Species Image", store=False)
     latin_name = fields.Char("Latin Name")
-    releases_ids = fields.One2many('zuvinimas.releases', "species_id", "Releases Of Species")
+    release_count = fields.Integer('Release Count', compute="_count_releases")
+    release_quantity_count = fields.Float(
+        'Released Quantity',
+        compute="_count_releases"
+    )
+    releases_ids = fields.One2many(
+        'zuvinimas.releases',
+        "species_id",
+        "Releases Of Species"
+    )
+    age_group_ids = fields.One2many(
+        'zuvinimas.species.age',
+        'species_id',
+        string="Age Groups Of The Species",
+        compute="_filter_by_age"
+    )
+    domain_location_id = fields.Many2one(
+        'zuvinimas.lakes',
+        'Computed Quantity Location',
+        compute="_count_releases"
+    )
     
     
 class zuvinimas_species_age(models.Model):
@@ -83,5 +184,20 @@ class zuvinimas_species_age(models.Model):
 
     name = fields.Char("Species Age Group", required=True, translate=True)
     age = fields.Char("Age Group Scientific Marking")
+    base_age_group = fields.Boolean("Species Inspecific Age Group")
+    species_id = fields.Many2one("zuvinimas.species", "Fish Species")
+    releases_ids = fields.One2many(
+        'zuvinimas.releases',
+        "age_group_id",
+        "Releases Of Age Group"
+    )
      
-     
+    @api.onchange('base_age_group', 'species_id')
+    def _group_depends(self):
+        for rec in self:
+            if rec.base_age_group:
+                rec.species_id = False
+            
+            
+            
+            

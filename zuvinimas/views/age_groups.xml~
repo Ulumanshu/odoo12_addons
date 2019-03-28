@@ -3,17 +3,85 @@
   
     <!-- explicit list view definition -->
     
-    <record model="ir.ui.view" id="zuvinimas._list">
+    <record model="ir.ui.view" id="zuvinimas.age_groups_list">
         <field name="name">zuvinimas fish species age list</field>
         <field name="model">zuvinimas.species.age</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name" required="True"/>
+                <field name="name"/>
                 <field name="age"/>
+                <field name="base_age_group"/>
+                <field
+                    name="species_id"
+                    required="[('base_age_group', '!=', True)]"
+                />
             </tree>
         </field>
     </record>
 
+         <!-- explicit form view definition -->
+    
+    <record model="ir.ui.view" id="zuvinimas.age_groups_form">
+        <field name="name">zuvinimas fish species age form</field>
+        <field name="model">zuvinimas.species.age</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                     <div class="oe_title">
+                         <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    
+                    <group>
+                        <field name="age"/>
+                        <field name="base_age_group"/>
+                        <field
+                            name="species_id"
+                            attrs="{'required': [('base_age_group','!=', True), 'invisible': [('base_age_group','=', True)]}"
+                        />
+                    </group>
+                    <notebook>
+                        <page string="Releases">
+                            <field name="releases_ids">
+                                <tree string="Releases">
+                                    <field name="date"/>
+                                    <field name="water_body_id"/>
+                                    <field name="species_id"/>
+                                    <field name="age_group_id" readonly="1"/>
+                                    <field name="quantity" sum="Total In Thousands"/>
+                                </tree>
+                                <form>
+                                    <div class="oe_title">
+                                         <h1>
+                                            <field name="date"/>
+                                        </h1>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                             <group>
+                                                <field name="water_body_id"/>
+                                            </group>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <group>
+                                                <field name="species_id"/>
+                                                <field name="age_group_id" readonly="1"/>
+                                                <field name="quantity"/>
+                                            </group>
+                                        </div>
+                                    </div>
+                                </form>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
     <!-- actions opening views on models -->
     
     <record model="ir.actions.act_window" id="zuvinimas.species_age_action_window">
