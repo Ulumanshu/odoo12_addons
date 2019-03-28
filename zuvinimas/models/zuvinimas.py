@@ -25,7 +25,7 @@ class zuvinimas_regions(models.Model):
      
     name = fields.Char("Region", required=True, translate=True)
     region_notes = fields.Text("Region Notes")
-    image = fields.Binary("Region Image", store=False)
+    image = fields.Binary("Region Image", store=True)
     water_body_count = fields.Integer('Waterbody Count', compute="_count_lakes")
     total_wb_area = fields.Float("Total Waterbody Area", compute="_count_lakes")
     water_body_ids = fields.One2many(
@@ -59,7 +59,7 @@ class zuvinimas_lakes(models.Model):
             rec.species_ids = rset_species
 
     name = fields.Char("Name Of Water Body", required=True, translate=True)
-    image = fields.Binary("Lake Image", store=False)
+    image = fields.Binary("Lake Image", store=True)
     release_count = fields.Integer('Release Count', compute="_count_releases")
     area = fields.Float("Area In Hectares")
     lake_notes = fields.Text("Waterbody Notes")
@@ -83,6 +83,7 @@ class zuvinimas_lakes(models.Model):
 #        if vals.get('releases_ids'):
 #            self.release_count = len(self.releases_ids)
 #        return res
+
 
 class zuvinimas_realeases(models.Model):
     _name = 'zuvinimas.releases'
@@ -154,7 +155,7 @@ class zuvinimas_species(models.Model):
     
     name = fields.Char("Species Name", required=True, translate=True)
     species_notes = fields.Text("Species Notes")
-    image = fields.Binary("Species Image", store=False)
+    image = fields.Binary("Species Image", store=True)
     latin_name = fields.Char("Latin Name")
     release_count = fields.Integer('Release Count', compute="_count_releases")
     release_quantity_count = fields.Float(
