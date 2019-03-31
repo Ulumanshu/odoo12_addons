@@ -7,8 +7,31 @@ def prynt(print_me):
     print(print_me)
     sys.stdout.flush()
 
+
 class zuvinimas(models.Model):
     _name = 'zuvinimas.main'
+
+#    @api.depends('releases_ids')
+#    def _count_species(self):
+#        for rec in self:
+#            rset_species = self.env['zuvinimas.species']
+#            for release in self.releases_ids:
+#                rset_species |= release.species_id
+#            rec.species_ids = rset_species
+
+#    @api.multi
+#    def write(self, vals):
+#        res = super(zuvinimas_regions, self).write(vals)
+#        if vals.get('water_body_ids'):
+#            self.water_body_count = len(self.water_body_ids)
+#        return res
+
+#    @api.multi
+#    def write(self, vals):
+#        res = super(zuvinimas_lakes, self).write(vals)
+#        if vals.get('releases_ids'):
+#            self.release_count = len(self.releases_ids)
+#        return res
 
 
 class zuvinimas_regions(models.Model):
@@ -34,13 +57,6 @@ class zuvinimas_regions(models.Model):
         "Belonging Water Bodies"
     )
     
-#    @api.multi
-#    def write(self, vals):
-#        res = super(zuvinimas_regions, self).write(vals)
-#        if vals.get('water_body_ids'):
-#            self.water_body_count = len(self.water_body_ids)
-#        return res
-
 
 class zuvinimas_lakes(models.Model):
     _name = 'zuvinimas.lakes'
@@ -49,15 +65,11 @@ class zuvinimas_lakes(models.Model):
     def _count_releases(self):
         for rec in self:
             rec.release_count = len(rec.releases_ids)
-            
-    @api.depends('releases_ids')
-    def _count_species(self):
-        for rec in self:
-            rset_species = self.env['zuvinimas.species']
-            for release in self.releases_ids:
+            rset_species = rec.env['zuvinimas.species']
+            for release in rec.releases_ids:
                 rset_species |= release.species_id
             rec.species_ids = rset_species
-
+    
     name = fields.Char("Name Of Water Body", required=True, translate=True)
     image = fields.Binary("Lake Image", store=True)
     release_count = fields.Integer('Release Count', compute="_count_releases")
@@ -74,16 +86,9 @@ class zuvinimas_lakes(models.Model):
         'zuvinimas_lakes_species_rel',
         'lake_id',
         'species_id',
-        compute="_count_species"
+        compute="_count_releases"
     )
     
-#    @api.multi
-#    def write(self, vals):
-#        res = super(zuvinimas_lakes, self).write(vals)
-#        if vals.get('releases_ids'):
-#            self.release_count = len(self.releases_ids)
-#        return res
-
 
 class zuvinimas_realeases(models.Model):
     _name = 'zuvinimas.releases'
@@ -94,7 +99,7 @@ class zuvinimas_realeases(models.Model):
         domain = []
         if species:
             domain.append('|')
-            domain.append(('species_id', '=', species and species.id or None))
+            domain.append(('species_id', '=', species.id))
         domain.append(('base_age_group', '=', True))
         return domain
     
@@ -137,8 +142,6 @@ class zuvinimas_species(models.Model):
             rec.release_count = len(rec.releases_ids)
             rec.domain_location_id = self.env.context.get('domain_location_id') or None
             res = 0.00
-            prynt(rec.domain_location_id)
-            prynt(self.env.context)
             for release in rec.releases_ids:
                 if rec.domain_location_id:
                     if release.water_body_id != rec.domain_location_id:
@@ -198,7 +201,5 @@ class zuvinimas_species_age(models.Model):
         for rec in self:
             if rec.base_age_group:
                 rec.species_id = False
-            
-            
             
             

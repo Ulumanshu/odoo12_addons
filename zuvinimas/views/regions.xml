@@ -91,7 +91,7 @@
                                         </page>
                                         <page string="Species">
                                             <field name="species_ids"
-                                            context="{'domain_location_id': active_id}">
+                                                context="{'domain_location_id': active_id}">
                                                 <tree string="Released Species">
                                                     <field name="name"/>
                                                     <field name="release_quantity_count" sum="Total In Thousands"/>
