@@ -10,6 +10,7 @@
             <tree>
                 <field name="name"/>
                 <field name="water_body_count"/>
+                <field name="total_wb_area"/>
             </tree>
         </field>
     </record>
