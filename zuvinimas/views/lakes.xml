@@ -33,6 +33,7 @@
                     <field name="image" widget="image" class="zstripel"/>
                     <group>
                         <field name="region_id"/>
+                        <field name="area"/>
                         <field name="release_count" readonly="1"/>
                     </group>
                     <notebook>

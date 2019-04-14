@@ -39,8 +39,8 @@
                             <field name="water_body_ids">
                                 <tree string="Waterbodies">
                                     <field name="name"/>
-                                    <field name="area"/>
-                                    <field name="release_count" readonly="1"/>
+                                    <field name="area" sum="Total Area"/>
+                                    <field name="release_count" sum="Total In Thousands"/>
                                 </tree>
                                 <form>
                                     <div class="oe_title">
@@ -91,7 +91,7 @@
                                         </page>
                                         <page string="Species">
                                             <field name="species_ids"
-                                            context="{'domain_location_id': active_id}">
+                                                context="{'domain_location_id': active_id}">
                                                 <tree string="Released Species">
                                                     <field name="name"/>
                                                     <field name="release_quantity_count" sum="Total In Thousands"/>
