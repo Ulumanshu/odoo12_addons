@@ -30,7 +30,7 @@
                             <field name="name"/>
                         </h1>
                     </div>
-                    <field name="image" widget="image" class="zstripel"/>
+                    <field name="image_html" widget="html"/>
                     <group>
                         <field name="region_id"/>
                         <field name="area"/>
@@ -109,6 +109,14 @@
     
     <menuitem name="Lakes" id="zuvinimas.lakes" parent="zuvinimas.menu_root"
         action="zuvinimas.lakes_action_window"/>
+        
+    <!-- google maps frame -->
+    
+    <template id='lake_location'>
+         <iframe t-att-src="url" 
+             marginheight="0" marginwidth="0" frameborder="0" 
+             width="100%" height="450"></iframe>
+    </template>
     
   </data>
 </odoo>

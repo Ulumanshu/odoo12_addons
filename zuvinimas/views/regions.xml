@@ -49,7 +49,7 @@
                                             <field name="name"/>
                                         </h1>
                                     </div>
-                                    <field name="image" widget="image" class="zstripel"/>
+                                    <field name="image_html" widget="html"/>
                                     <group>
                                         <field name="area"/>
                                         <field name="release_count" readonly="1"/>
