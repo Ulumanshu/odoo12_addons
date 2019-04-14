@@ -17,3 +17,9 @@ width: 320px;
 height: 180px;
 width: 180px;
 }
+
+.zstripel .img-fluid {
+    max-width: 100%;
+    width: 70%;
+    height: auto;
+}

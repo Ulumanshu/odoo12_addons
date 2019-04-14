@@ -36,6 +36,12 @@
                         <field name="area"/>
                         <field name="release_count" readonly="1"/>
                     </group>
+                    <group>
+                        <field name="correct_map"/>
+                        <field name="g_query"
+                            attrs="{'readonly': [('correct_map', '!=', True)], 'invisible': [('correct_map', '!=', True)]}"
+                            />
+                    </group>
                     <notebook>
                         <page string="Releases">
                             <field name="releases_ids">
@@ -74,7 +80,7 @@
                         </page>
                         <page string="Species">
                             <field name="species_ids"
-                            context="{'domain_location_id': active_id}">
+                                context="{'domain_location_id': active_id}">
                                 <tree string="Released Species">
                                     <field name="name"/>
                                     <field name="release_quantity_count" sum="Total In Thousands"/>

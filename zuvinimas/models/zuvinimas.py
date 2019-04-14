@@ -72,7 +72,7 @@ class zuvinimas_lakes(models.Model):
                 rset_species |= release.species_id
             rec.species_ids = rset_species
             
-    @api.depends('name', 'region_id.name')
+    @api.depends('name', 'region_id.name', "g_query")
     def _get_default_map_image(self):
         api_key = ''
         dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -81,14 +81,25 @@ class zuvinimas_lakes(models.Model):
         with open(filename) as f:
             api_key = json.load(f).get('maps')
         for rec in self:
-            query = "in+Lithuania+%s" % rec.name
-            query += rec.region_id and rec.region_id.name and "+%s" % rec.region_id.name or ''
+            if not rec.g_query:
+                region = rec.region_id and rec.region_id.name and "+in+%s" % rec.region_id.name or ''
+                query = "in+Lithuania+ezeras%s" % rec.name
+                query += region
+            else:
+                query = rec.g_query
             url = 'https://www.google.com/maps/embed/v1/search?key=%s&q=%s' % (api_key, query)
             template = self.env.ref('zuvinimas.lake_location')
             rec.image_html = template.render({ 'url' : url })
     
     name = fields.Char("Name Of Water Body", required=True, translate=True)
-    image_html = fields.Html("Lake Image", compute=_get_default_map_image, sanitize=False, strip_style=False)
+    image_html = fields.Html(
+        "Lake Image",
+        compute=_get_default_map_image,
+         sanitize=False,
+         strip_style=False
+    )
+    g_query = fields.Char("Query For Google Maps")
+    correct_map = fields.Boolean("Correct Map")
     release_count = fields.Integer('Release Count', compute="_count_releases")
     area = fields.Float("Area In Hectares")
     lake_notes = fields.Text("Waterbody Notes")
