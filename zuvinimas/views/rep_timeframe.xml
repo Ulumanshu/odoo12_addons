@@ -1,26 +1,6 @@
 <odoo>
   <data>
-   
-<!--    <record id="action_for_zuvinimas_main_period_species_graph" model="ir.actions.act_window">-->
-<!--        <field name="name">By Species</field>-->
-<!--        <field name="res_model">zuvinimas.main.period</field>-->
-<!--        <field name="view_type">form</field>-->
-<!--        <field name="view_mode">graph</field>-->
-<!--        <field name="view_id" ref="view_zuvinimas_main_period_species_graph_qty"/>-->
-<!--    </record>-->
-<!--    -->
-<!--    <record model="ir.ui.view" id="view_zuvinimas_main_period_species_graph_qty">-->
-<!--        <field name="name">zuvinimas.main.period.species.graph</field>-->
-<!--        <field name="model">zuvinimas.main.period</field>-->
-<!--        <field eval="12" name="priority"/>-->
-<!--        <field name="arch" type="xml">-->
-<!--            <graph string="Inventory Valuation" type="pie">-->
-<!--                <field name="period_species_ids" type="row"/>-->
-<!--                <field name="period_species_ids.total_release_qty" type="measure"/>-->
-<!--            </graph>-->
-<!--        </field>-->
-<!--    </record> -->
-    
+  
    <!-- explicit form view definition -->
     
     <record model="ir.ui.view" id="zuvinimas.main_form">
@@ -48,13 +28,6 @@
                                 </graph>
                             </field>
                         </page>
-<!--                        <page string="Periods Graph">-->
-<!--                            <field name="period_ids" mode="graph">-->
-<!--                                <graph string="Period Release Share" type="area">-->
-<!--                                    <field name="period_release_qty"/>-->
-<!--                                </graph>-->
-<!--                             </field>-->
-<!--                        </page>-->
                     </notebook>
                 </sheet>
             </form>
@@ -78,10 +51,6 @@
                     </div>
                     <group>
                         <field name="period_release_qty"/>
-<!--                        <button class="oe_stat_button" type="action"-->
-<!--                            name="%(action_for_zuvinimas_main_period_species_graph)d"-->
-<!--                            string="Graph"-->
-<!--                            />-->
                     </group>
                     <notebook>
                         <page string="Species">
