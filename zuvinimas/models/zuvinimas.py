@@ -27,11 +27,12 @@ class zuvinimas(models.Model):
         if len(sorted_rels_ids) > 2:
             min_date = sorted_rels_ids[0].date.replace(month=1, day=1)
             max_date = sorted_rels_ids[-1].date.replace(month=12, day=31)
+            one_day = relativedelta(days=1)
             one_year = relativedelta(years=1)
             focus = min_date
             while focus < max_date:
                 periods_releases_ids = sorted_rels_ids.filtered(
-                    lambda r: r.date >= focus and r.date <= focus + one_year
+                    lambda r: r.date >= focus and r.date <= focus + one_year - one_day
                 )
                 period = period_obj.create({
                     'name': focus.strftime("%Y"),
@@ -102,7 +103,7 @@ class zuvinimas_main__period_species(models.Model):
     p_species_age_group_ids = fields.One2many(
         'zuvinimas.main.period.species.age_groups',
         'period_species_id',
-        'Species Released This Year'
+        'Age Group Releases This Year'
     )
     
 
@@ -173,7 +174,6 @@ class zuvinimas_lakes(models.Model):
             url = 'https://www.google.com/maps/embed/v1/search?key=%s&q=%s' % (api_key, query)
             template = self.env.ref('zuvinimas.lake_location')
             rec.image_html = template.render({ 'url' : url })
-    
     name = fields.Char("Name Of Water Body", required=True, translate=True)
     image_html = fields.Html(
         "Lake Image",
