@@ -3,8 +3,14 @@
   
     <!-- Top menu item -->
     
+    <record model="ir.actions.act_window" id="zuvinimas_main_action_window">
+        <field name="name">fish releases overview window</field>
+        <field name="res_model">zuvinimas.main</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
     <menuitem name="Fish Releases" id="zuvinimas.menu_root"
-        action="zuvinimas.regions_action_window"/>
+        action="zuvinimas_main_action_window"/>
     
     <!-- menu categories -->
    

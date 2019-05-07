@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from dateutil.relativedelta import relativedelta
+from datetime import datetime
 import os
 import json
 
@@ -13,28 +15,109 @@ def prynt(print_me):
 class zuvinimas(models.Model):
     _name = 'zuvinimas.main'
 
-#    @api.depends('releases_ids')
-#    def _count_species(self):
-#        for rec in self:
-#            rset_species = self.env['zuvinimas.species']
-#            for release in self.releases_ids:
-#                rset_species |= release.species_id
-#            rec.species_ids = rset_species
+    @api.model
+    def create(self, vals):
+        res = super(zuvinimas, self).create(vals)
+        period_obj = self.env['zuvinimas.main.period']
+        period_species_obj = self.env['zuvinimas.main.period.species']
+        spc_ag_obj = self.env['zuvinimas.main.period.species.age_groups']
+        releases_obj = self.env['zuvinimas.releases']
+        releases_ids = releases_obj.search([])
+        sorted_rels_ids = releases_ids.sorted(key=lambda r: r.date)
+        if len(sorted_rels_ids) > 2:
+            min_date = sorted_rels_ids[0].date.replace(month=1, day=1)
+            max_date = sorted_rels_ids[-1].date.replace(month=12, day=31)
+            one_year = relativedelta(years=1)
+            focus = min_date
+            while focus < max_date:
+                periods_releases_ids = sorted_rels_ids.filtered(
+                    lambda r: r.date >= focus and r.date <= focus + one_year
+                )
+                period = period_obj.create({
+                    'name': focus.strftime("%Y"),
+                    'main_id': res.id
+                })
+                period.period_release_qty = sum(periods_releases_ids.mapped(lambda r: r.quantity))
+                species_list = list(set(periods_releases_ids.mapped('species_id.name')))
+                for sp in species_list:
+                    species = period_species_obj.create({
+                        'name': sp,
+                        'period_id': period.id
+                    })
+                    species_releases = periods_releases_ids.filtered(
+                        lambda r: r.species_id.name == sp
+                    )
+                    species.total_release_qty = sum(species_releases.mapped(lambda r: r.quantity))
+                    species_age_group_list = list(set(species_releases.mapped('age_group_id.age')))
+                    for group in species_age_group_list:
+                        age_group = spc_ag_obj.create({
+                            'sci_name': group,
+                            'period_species_id': species.id
+                        })
+                        age_group_releases = species_releases.filtered(
+                            lambda r: r.age_group_id.age == group
+                        )
+                        age_group.age_group_release_qty = sum(
+                            age_group_releases.mapped(lambda r: r.quantity)
+                        )
+                        species.p_species_age_group_ids += age_group
+                    period.period_species_ids += species
+                res.period_ids += period
+                focus += one_year
+        
+        return res
+    
+    @api.model
+    def get_default_timeframe_name(self):
+        return datetime.now().strftime("%Y-%m-%d %H:%M")
+    
+    name = fields.Char("Timeframe", default=get_default_timeframe_name)
+    period_ids = fields.One2many(
+        'zuvinimas.main.period',
+        'main_id',
+        'Years With Planned Releases',
+        readonly=True
+    )
+    
 
-#    @api.multi
-#    def write(self, vals):
-#        res = super(zuvinimas_regions, self).write(vals)
-#        if vals.get('water_body_ids'):
-#            self.water_body_count = len(self.water_body_ids)
-#        return res
+class zuvinimas_main_period(models.Model):
+    _name = 'zuvinimas.main.period'
+    
+    name = fields.Char("Year")
+    main_id = fields.Many2one('zuvinimas.main', 'Timeframe', ondelete='cascade')
+    period_release_qty = fields.Float('Total Period Release Quantity')
+    period_species_ids = fields.One2many(
+        'zuvinimas.main.period.species',
+        'period_id',
+        'Species Released This Year'
+    )
+    
+    
+class zuvinimas_main__period_species(models.Model):
+    _name = 'zuvinimas.main.period.species'
 
-#    @api.multi
-#    def write(self, vals):
-#        res = super(zuvinimas_lakes, self).write(vals)
-#        if vals.get('releases_ids'):
-#            self.release_count = len(self.releases_ids)
-#        return res
+    name = fields.Char("Period Species")
+    period_id = fields.Many2one('zuvinimas.main.period', 'Current Year', ondelete='cascade')
+    total_release_qty = fields.Float('Total Quantity Released')
+    p_species_age_group_ids = fields.One2many(
+        'zuvinimas.main.period.species.age_groups',
+        'period_species_id',
+        'Species Released This Year'
+    )
+    
 
+class zuvinimas_main__period_species_age_groups(models.Model):
+    _name = 'zuvinimas.main.period.species.age_groups'
+    _rec_name = "sci_name"
+    
+    sci_name = fields.Char("Scientific Name")
+    period_species_id = fields.Many2one(
+        'zuvinimas.main.period.species',
+        'Period Species',
+        ondelete='cascade'
+    )
+    age_group_release_qty = fields.Float('Total Age Group Release Quantity')
+    
 
 class zuvinimas_regions(models.Model):
     _name = 'zuvinimas.regions'

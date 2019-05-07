@@ -34,6 +34,7 @@
         'views/releases.xml',
         'views/species.xml',
         'views/age_groups.xml',
+        'views/rep_timeframe.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

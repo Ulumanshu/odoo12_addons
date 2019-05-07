@@ -1,0 +1,135 @@
+<odoo>
+  <data>
+   
+<!--    <record id="action_for_zuvinimas_main_period_species_graph" model="ir.actions.act_window">-->
+<!--        <field name="name">By Species</field>-->
+<!--        <field name="res_model">zuvinimas.main.period</field>-->
+<!--        <field name="view_type">form</field>-->
+<!--        <field name="view_mode">graph</field>-->
+<!--        <field name="view_id" ref="view_zuvinimas_main_period_species_graph_qty"/>-->
+<!--    </record>-->
+<!--    -->
+<!--    <record model="ir.ui.view" id="view_zuvinimas_main_period_species_graph_qty">-->
+<!--        <field name="name">zuvinimas.main.period.species.graph</field>-->
+<!--        <field name="model">zuvinimas.main.period</field>-->
+<!--        <field eval="12" name="priority"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <graph string="Inventory Valuation" type="pie">-->
+<!--                <field name="period_species_ids" type="row"/>-->
+<!--                <field name="period_species_ids.total_release_qty" type="measure"/>-->
+<!--            </graph>-->
+<!--        </field>-->
+<!--    </record> -->
+    
+   <!-- explicit form view definition -->
+    
+    <record model="ir.ui.view" id="zuvinimas.main_form">
+        <field name="name">zuvinimas main form</field>
+        <field name="model">zuvinimas.main</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                     <div class="oe_title">
+                         <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page string="Periods">
+                            <field name="period_ids">
+                                <tree string="Years">
+                                    <field name="name"/>
+                                    <field name="period_release_qty" sum="Total"/>
+                                </tree>
+                                <graph string="Period Release Share" type="area">
+                                    <field name="period_release_qty"/>
+                                </graph>
+                            </field>
+                        </page>
+<!--                        <page string="Periods Graph">-->
+<!--                            <field name="period_ids" mode="graph">-->
+<!--                                <graph string="Period Release Share" type="area">-->
+<!--                                    <field name="period_release_qty"/>-->
+<!--                                </graph>-->
+<!--                             </field>-->
+<!--                        </page>-->
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- explicit form view definition -->
+    
+    <record model="ir.ui.view" id="zuvinimas.main_period_form">
+        <field name="name">zuvinimas main period form</field>
+        <field name="model">zuvinimas.main.period</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                     <div class="oe_title">
+                         <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="period_release_qty"/>
+<!--                        <button class="oe_stat_button" type="action"-->
+<!--                            name="%(action_for_zuvinimas_main_period_species_graph)d"-->
+<!--                            string="Graph"-->
+<!--                            />-->
+                    </group>
+                    <notebook>
+                        <page string="Species">
+                            <field name="period_species_ids">
+                                <tree string="Species">
+                                    <field name="name"/>
+                                    <field name="total_release_qty" sum="Total Released"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+        <!-- explicit form view definition -->
+    
+    <record model="ir.ui.view" id="zuvinimas.main_period_species_form">
+        <field name="name">zuvinimas main period species form</field>
+        <field name="model">zuvinimas.main.period.species</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <sheet>
+                     <div class="oe_title">
+                         <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="total_release_qty"/>
+                    </group>
+                    <notebook>
+                        <page string="Age Groups">
+                            <field name="p_species_age_group_ids">
+                                <tree string="Age Groups">
+                                    <field name="sci_name"/>
+                                    <field name="age_group_release_qty" sum="Total Released"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+   
+  </data>
+</odoo>
