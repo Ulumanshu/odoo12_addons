@@ -26,6 +26,7 @@
     # always loaded
     'data': [
         'security/ir.model.access.csv',
+        'wizard/exel_export_wiz_view.xml',
         'views/templates.xml',
         'views/assets.xml',
         'views/zuvinimas.xml',
@@ -34,8 +35,7 @@
         'views/releases.xml',
         'views/species.xml',
         'views/age_groups.xml',
-        'views/rep_timeframe.xml',
-        'wizard/exel_export_wiz_view.xml',
+        'views/rep_timeframe.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
