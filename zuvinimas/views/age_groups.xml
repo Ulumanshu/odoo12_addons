@@ -45,10 +45,10 @@
                     </group>
                     <notebook>
                         <page string="Releases">
-                            <field name="releases_ids">
+                            <field name="releases_ids" context="{'default_age_group_id': active_id}">
                                 <tree string="Releases">
                                     <field name="date"/>
-                                    <field name="water_body_id"/>
+                                    <field name="water_body_id" required="True"/>
                                     <field name="species_id"/>
                                     <field name="age_group_id" readonly="1"/>
                                     <field name="quantity" sum="Total In Thousands"/>
@@ -62,7 +62,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                              <group>
-                                                <field name="water_body_id"/>
+                                                <field name="water_body_id" required="True"/>
                                             </group>
                                         </div>
                                         <div class="col-md-6">

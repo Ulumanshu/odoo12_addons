@@ -15,6 +15,11 @@
     <!-- menu categories -->
    
     <menuitem name="Fishes" id="zuvinimas.fish_details" parent="zuvinimas.menu_root"/>
+     <!-- menu for wizards and such -->
+    <menuitem name="Actions" id="zuvinimas.module_wide_actions" parent="zuvinimas.menu_root"/>
+    <menuitem name="Excel Export" id="zuvinimas.excel_export"
+        parent="zuvinimas.module_wide_actions"
+        action="zuvinimas.zuvinimas_excel_export"/>
 
 <!--    <! actions -->
 <!--    -->

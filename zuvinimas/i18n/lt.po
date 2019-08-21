@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-28 23:02+0000\n"
-"PO-Revision-Date: 2019-03-29 01:20+0200\n"
+"POT-Creation-Date: 2019-08-21 05:56+0000\n"
+"PO-Revision-Date: 2019-08-21 09:14+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt_LT\n"
@@ -16,11 +16,27 @@ msgstr ""
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.module_wide_actions
+msgid "Actions"
+msgstr "Veiksmai"
+
+#. module: zuvinimas
+#: selection:exel.export.wiz,chart:0 selection:exel.export.wiz,group_by:0
+msgid "Age"
+msgstr "Amžius"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species__p_species_age_group_ids
+msgid "Age Group Releases This Year"
+msgstr "Amžiaus grupės"
+
+#. module: zuvinimas
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__age
 msgid "Age Group Scientific Marking"
 msgstr "Amžiaus grupės mokslinis žymuo"
 
 #. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.main_period_species_form
 #: model_terms:ir.ui.view,arch_db:zuvinimas.species_form
 msgid "Age Groups"
 msgstr "Žuvų amžiaus grupės"
@@ -36,9 +52,29 @@ msgid "Area In Hectares"
 msgstr "Plotas Hektarais"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__period
+msgid "Available Periods"
+msgstr "Galimi periodai"
+
+#. module: zuvinimas
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__water_body_ids
 msgid "Belonging Water Bodies"
 msgstr "Vandens Telkiniai"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_form_view
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__chart
+msgid "Charts For"
+msgstr "Kurti grafikus"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_result_form_view
+msgid "Close"
+msgstr "Uždaryti"
 
 #. module: zuvinimas
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__domain_location_id
@@ -46,13 +82,23 @@ msgid "Computed Quantity Location"
 msgstr "Kiekis pagal vietą"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__water_body_id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__water_body_id
 msgid "Concerned Waterbody"
 msgstr "Telkinys"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__correct_map
+msgid "Correct Map"
+msgstr "Taisyti žemėlapį"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__create_uid
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__create_uid
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species__create_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species_age_groups__create_uid
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__create_uid
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__create_uid
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__create_uid
@@ -61,8 +107,12 @@ msgid "Created by"
 msgstr "Sukurta vartotojo"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__create_date
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__create_date
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species__create_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species_age_groups__create_date
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__create_date
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__create_date
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__create_date
@@ -71,19 +121,53 @@ msgid "Created on"
 msgstr "Sukūrimo data"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species__period_id
+msgid "Current Year"
+msgstr "Einami metai"
+
+#. module: zuvinimas
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__date
 msgid "Date Of Release"
 msgstr "Žuvinimo data"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__display_name
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__display_name
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species__display_name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species_age_groups__display_name
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__display_name
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__display_name
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__display_name
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__display_name
 msgid "Display Name"
 msgstr "Pavadinimas"
+
+#. module: zuvinimas
+#: model:ir.ui.menu,name:zuvinimas.excel_export
+msgid "Excel Export"
+msgstr "Eksportas į excel"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__excel_file
+msgid "Excel Report"
+msgstr "Excel ataskaita"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_form_view
+msgid "Export"
+msgstr "Eksportuoti"
+
+#. module: zuvinimas
+#: model:ir.actions.act_window,name:zuvinimas.zuvinimas_excel_export
+msgid "Export To Excel"
+msgstr "Eksportuoti į excel"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_form_view
+msgid "Filter Data To Export"
+msgstr "Filtruoti duomenis eksportui"
 
 #. module: zuvinimas
 #: model:ir.ui.menu,name:zuvinimas.fish_age_groups
@@ -96,6 +180,7 @@ msgid "Fish Releases"
 msgstr "Žuvinimai"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__species_id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__species_id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species_age__species_id
 #: model:ir.ui.menu,name:zuvinimas.fish_species
@@ -103,6 +188,7 @@ msgid "Fish Species"
 msgstr "Žuvų rūšys"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__age_group_id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__age_group_id
 msgid "Fish Species Age Group"
 msgstr "Rušių amžiaus grupės"
@@ -113,8 +199,17 @@ msgid "Fishes"
 msgstr "Žuvys"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__group_by
+msgid "Group By"
+msgstr "Grupuoti pagal"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species__id
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species_age_groups__id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__id
@@ -123,7 +218,12 @@ msgid "ID"
 msgstr "ID"
 
 #. module: zuvinimas
-#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__image
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__ignore_date
+msgid "Ignore Date When Sorting"
+msgstr "Negrupuoti pagal datą"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__image_html
 msgid "Lake Image"
 msgstr "Vandens telkinio paveikslėlis"
 
@@ -133,8 +233,12 @@ msgid "Lakes"
 msgstr "Vandens telkiniai"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz____last_update
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes____last_update
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species____last_update
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species_age_groups____last_update
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions____last_update
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases____last_update
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species____last_update
@@ -143,8 +247,12 @@ msgid "Last Modified on"
 msgstr "Paskutinį kartą modifikuota"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__write_uid
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__write_uid
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species__write_uid
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species_age_groups__write_uid
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__write_uid
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__write_uid
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__write_uid
@@ -153,8 +261,12 @@ msgid "Last Updated by"
 msgstr "Paskutinį kartą atnaujinta vartotojo"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__write_date
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__write_date
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species__write_date
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species_age_groups__write_date
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__write_date
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__write_date
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_species__write_date
@@ -173,6 +285,39 @@ msgid "Name Of Water Body"
 msgstr "Vandens telkinio pavadinimas"
 
 #. module: zuvinimas
+#: code:addons/zuvinimas/wizard/exel_export_wiz.py:303
+#, python-format
+msgid "No Entries Found"
+msgstr "Nerasta įrašų, pagal pasirintus kriterijus"
+
+#. module: zuvinimas
+#: selection:exel.export.wiz,chart:0 selection:exel.export.wiz,group_by:0
+msgid "Period"
+msgstr "Laikotarpis"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.main_form
+msgid "Period Release Share"
+msgstr "Periodo žuvinimų dalis"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species__name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species_age_groups__period_species_id
+msgid "Period Species"
+msgstr "Laikotarpio rūšys"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.main_form
+msgid "Periods"
+msgstr "Laikotarpiai"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__g_query
+msgid "Query For Google Maps"
+msgstr "Google maps užklausa"
+
+#. module: zuvinimas
+#: selection:exel.export.wiz,chart:0 selection:exel.export.wiz,group_by:0
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__name
 msgid "Region"
 msgstr "Rajonas"
@@ -240,8 +385,35 @@ msgid "Releases Of Species"
 msgstr "Rūšių žuvinimai"
 
 #. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.releases_graph
+msgid "Releases by Species"
+msgstr "Rūšių žuvinimai"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__file_name
+msgid "Report Filename"
+msgstr "Ataskaitos failo pavadinimas"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_result_form_view
+msgid "Report Result"
+msgstr "Ataskaitos rezultatas"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_result_form_view
+msgid "Save"
+msgstr "Išsaugoti"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species_age_groups__sci_name
+msgid "Scientific Name"
+msgstr "Mokslinis pavadinimas"
+
+#. module: zuvinimas
+#: selection:exel.export.wiz,chart:0 selection:exel.export.wiz,group_by:0
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__species_ids
 #: model_terms:ir.ui.view,arch_db:zuvinimas.lakes_form
+#: model_terms:ir.ui.view,arch_db:zuvinimas.main_period_form
 #: model_terms:ir.ui.view,arch_db:zuvinimas.regions_form
 msgid "Species"
 msgstr "Žuvų rūšys"
@@ -273,6 +445,27 @@ msgid "Species Notes"
 msgstr "Rūšies užrašai"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period__period_species_ids
+msgid "Species Released This Year"
+msgstr "Šiais metais žuvintos rūšys"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__name
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period__main_id
+msgid "Timeframe"
+msgstr "Laiko seka"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.main_form
+msgid "Total"
+msgstr "Viso"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species_age_groups__age_group_release_qty
+msgid "Total Age Group Release Quantity"
+msgstr "Amžiaus grupės įžuvinimo kiekis"
+
+#. module: zuvinimas
 #: model_terms:ir.ui.view,arch_db:zuvinimas.regions_form
 msgid "Total Area"
 msgstr "Bendras vandens telkinių plotas"
@@ -287,6 +480,22 @@ msgid "Total In Thousands"
 msgstr "Viso tūkstančių"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period__period_release_qty
+msgid "Total Period Release Quantity"
+msgstr "Laikotarpio įžuvinimo kiekis"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period_species__total_release_qty
+msgid "Total Quantity Released"
+msgstr "Visas įžuvintas kiekis"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.main_period_form
+#: model_terms:ir.ui.view,arch_db:zuvinimas.main_period_species_form
+msgid "Total Released"
+msgstr "Viso įžuvinta"
+
+#. module: zuvinimas
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__total_wb_area
 msgid "Total Waterbody Area"
 msgstr "Visų vandens telkinių plotas"
@@ -295,6 +504,11 @@ msgstr "Visų vandens telkinių plotas"
 #: model_terms:ir.ui.view,arch_db:zuvinimas.regions_form
 msgid "Waterbodies"
 msgstr "Vandends telkiniai"
+
+#. module: zuvinimas
+#: selection:exel.export.wiz,chart:0 selection:exel.export.wiz,group_by:0
+msgid "Waterbody"
+msgstr "Vandends telkinys"
 
 #. module: zuvinimas
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__water_body_count
@@ -309,10 +523,31 @@ msgid "Waterbody Notes"
 msgstr "Vandens telkinio užrašai"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__region_id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__region_id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_releases__region_id
 msgid "Waterbody Region"
 msgstr "Vandens telkinio rajonas"
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_exel_export_wiz
+msgid "Wizard: Quick Excel Export"
+msgstr "Greitas eksportas į excel"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main_period__name
+msgid "Year"
+msgstr "Metai"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.main_form
+msgid "Years"
+msgstr "Metų"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__period_ids
+msgid "Years With Planned Releases"
+msgstr "Metai su planuojamais žuvinimais"
 
 #. module: zuvinimas
 #: model:ir.actions.act_window,name:zuvinimas.species_age_action_window
@@ -330,6 +565,11 @@ msgid "fish release regions window"
 msgstr "Rajonai"
 
 #. module: zuvinimas
+#: model:ir.actions.act_window,name:zuvinimas.zuvinimas_main_action_window
+msgid "fish releases overview window"
+msgstr "Žuvinimai sąntrauka"
+
+#. module: zuvinimas
 #: model:ir.actions.act_window,name:zuvinimas.releases_action_window
 msgid "fish releases window"
 msgstr "Žuvinimai"
@@ -340,6 +580,12 @@ msgid "fish species window"
 msgstr "Žuvų rūšys"
 
 #. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_form_view
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_result_form_view
+msgid "or"
+msgstr "ar"
+
+#. module: zuvinimas
 #: model:ir.model,name:zuvinimas.model_zuvinimas_lakes
 msgid "zuvinimas.lakes"
 msgstr "vandens telkinys"
@@ -347,24 +593,39 @@ msgstr "vandens telkinys"
 #. module: zuvinimas
 #: model:ir.model,name:zuvinimas.model_zuvinimas_main
 msgid "zuvinimas.main"
-msgstr "žuvinimas"
+msgstr "Žuvinimų sąntrauka"
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_main_period
+msgid "zuvinimas.main.period"
+msgstr "Žuvinimo sąntraukos laikotarpis"
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_main_period_species
+msgid "zuvinimas.main.period.species"
+msgstr "Žuvinimo sąntraukos rūšys"
+
+#. module: zuvinimas
+#: model:ir.model,name:zuvinimas.model_zuvinimas_main_period_species_age_groups
+msgid "zuvinimas.main.period.species.age_groups"
+msgstr "Žuvinimo sąntraukos amžiaus grupės"
 
 #. module: zuvinimas
 #: model:ir.model,name:zuvinimas.model_zuvinimas_regions
 msgid "zuvinimas.regions"
-msgstr "regionas"
+msgstr "Regionai"
 
 #. module: zuvinimas
 #: model:ir.model,name:zuvinimas.model_zuvinimas_releases
 msgid "zuvinimas.releases"
-msgstr "žuvinimas"
+msgstr "Žuvinimai"
 
 #. module: zuvinimas
 #: model:ir.model,name:zuvinimas.model_zuvinimas_species
 msgid "zuvinimas.species"
-msgstr "rūšis"
+msgstr "Rūšys"
 
 #. module: zuvinimas
 #: model:ir.model,name:zuvinimas.model_zuvinimas_species_age
 msgid "zuvinimas.species.age"
-msgstr "amžiaus grupė"
+msgstr "Amžiaus grupės"

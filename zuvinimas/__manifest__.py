@@ -35,6 +35,7 @@
         'views/species.xml',
         'views/age_groups.xml',
         'views/rep_timeframe.xml',
+        'wizard/exel_export_wiz_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -57,14 +57,14 @@
                                     <notebook>
                                         <page string="Releases">
                                             <field name="releases_ids">
-                                                <tree string="Releases" create="false">
+                                                <tree string="Releases">
                                                     <field name="date"/>
                                                     <field name="water_body_id" readonly="1"/>
                                                     <field name="species_id"/>
                                                     <field name="age_group_id"/>
                                                     <field name="quantity" sum="Total In Thousands"/>
                                                 </tree>
-                                                <form create="false">
+                                                <form>
                                                     <div class="oe_title">
                                                          <h1>
                                                             <field name="date"/>
@@ -73,13 +73,12 @@
                                                     <div class="row">
                                                         <div class="col-md-6">
                                                              <group>
-                                                                <field name="water_body_id" readonly="1"/>
+                                                                <field name="species_id"/>
+                                                                <field name="age_group_id"/>
                                                             </group>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <group>
-                                                                <field name="species_id"/>
-                                                                <field name="age_group_id"/>
                                                                 <field name="quantity"/>
                                                             </group>
                                                         </div>

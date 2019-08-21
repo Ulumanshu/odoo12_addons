@@ -1,0 +1,76 @@
+<odoo>
+  <data>
+  
+    <record model="ir.ui.view" id="excel_export_wiz_form_view">
+        <field name="name">excel.export.wiz.form</field>
+        <field name="model">exel.export.wiz</field>
+        <field name="arch" type="xml">
+            <form string="Filter Data To Export">
+                <sheet>
+                    <group colspan="12">
+                        <group colspan="6">
+                            <group>
+                                <field name="period"/>
+                            </group>
+                            <group>
+                                <field name="region_id"/>
+                                <field name="water_body_id"/>
+                            </group>
+                            <group>
+                                <field name="species_id"/>
+                                <field name="age_group_id"/>
+                            </group>
+                        </group>
+                        <group colspan="6">
+                             <group>
+                                <field name="group_by"/>
+                                <field name="chart"/>
+                                <field name="ignore_date"/>
+                            </group>
+                            <group>
+                                <field name="file_name"/>
+                            </group>
+                        </group>
+                     </group>
+                     <footer>
+                        <button name="export" type="object"
+                            string="Export" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="excel_export_wiz_result_form_view">
+        <field name="name">excel.export.wiz.result.form</field>
+        <field name="model">exel.export.wiz</field>
+        <field name="arch" type="xml">
+            <form string="Report Result">
+                <sheet>
+                    <group>
+                        <field name="file_name" invisible="True"/>
+                        <field name="excel_file" readonly="True" filename="file_name"/>
+                    </group>
+                     <footer>
+                        <button name="save_rep" type="object"
+                            string="Save" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Close"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <act_window id="zuvinimas_excel_export"
+        name="Export To Excel"
+        src_model="zuvinimas.releases"
+        res_model="exel.export.wiz"
+        view_mode="form"
+        target="new"
+        key2="client_action_multi"/>
+  
+  </data>
+</odoo>

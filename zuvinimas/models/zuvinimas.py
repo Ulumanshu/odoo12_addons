@@ -204,15 +204,6 @@ class zuvinimas_lakes(models.Model):
 class zuvinimas_realeases(models.Model):
     _name = 'zuvinimas.releases'
     _rec_name = 'date'
-     
-    @api.model
-    def _getfilter(self, species=None):
-        domain = []
-        if species:
-            domain.append('|')
-            domain.append(('species_id', '=', species.id))
-        domain.append(('base_age_group', '=', True))
-        return domain
     
     date = fields.Date("Date Of Release", required=True)
     species_id = fields.Many2one("zuvinimas.species", "Fish Species", required=True)
@@ -220,13 +211,9 @@ class zuvinimas_realeases(models.Model):
         "zuvinimas.species.age",
         "Fish Species Age Group",
         required=True,
-        domain=_getfilter
+        domain="['|', ('species_id', '=', species_id), ('base_age_group', '=', True)]"
     )
-    water_body_id = fields.Many2one(
-        "zuvinimas.lakes",
-        "Concerned Waterbody",
-        required=True
-    )
+    water_body_id = fields.Many2one("zuvinimas.lakes", "Concerned Waterbody")
     region_id = fields.Many2one(
         "zuvinimas.regions",
         "Waterbody Region",
@@ -237,13 +224,13 @@ class zuvinimas_realeases(models.Model):
     @api.onchange('species_id')
     def _correct_age_groups(self):
         for rec in self:
-            res = {}
-            rec.age_group_id = False
-            domain = self._getfilter(self.species_id)
-            res['domain'] = {'age_group_id': domain}
-            return res
-    
-    
+            species_age_groups = self.env['zuvinimas.species.age'].search(
+                ['|', ('species_id', '=', rec.species_id.id), ('base_age_group', '=', True)]
+            )
+            if rec.age_group_id not in species_age_groups:
+                rec.age_group_id = False
+
+
 class zuvinimas_species(models.Model):
     _name = 'zuvinimas.species'
     

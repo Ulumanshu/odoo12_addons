@@ -11,9 +11,41 @@
                 <field name="date"/>
                 <field name="species_id"/>
                 <field name="age_group_id"/>
-                <field name="water_body_id"/>
+                <field name="water_body_id" required="True"/>
                 <field name="quantity" sum="Total In Thousands"/>
             </tree>
+        </field>
+    </record>
+    
+     <!-- explicit form view definition -->
+    
+    <record model="ir.ui.view" id="zuvinimas.releases_form">
+        <field name="name">zuvinimas releases form</field>
+        <field name="model">zuvinimas.releases</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                         <h1>
+                            <field name="date"/>
+                        </h1>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                             <group>
+                                <field name="water_body_id" required="True"/>
+                            </group>
+                        </div>
+                        <div class="col-md-6">
+                            <group>
+                                <field name="species_id"/>
+                                <field name="age_group_id"/>
+                                <field name="quantity"/>
+                            </group>
+                        </div>
+                    </div>
+                </sheet>
+            </form>
         </field>
     </record>
     
