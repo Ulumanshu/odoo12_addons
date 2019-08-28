@@ -8,11 +8,9 @@
             <form string="Filter Data To Export">
                 <sheet>
                     <group colspan="12">
-                        <group colspan="6">
+                        <group colspan="6" string="Filters For Data">
                             <group>
                                 <field name="period"/>
-                            </group>
-                            <group>
                                 <field name="region_id"/>
                                 <field name="water_body_id"/>
                             </group>
@@ -21,12 +19,29 @@
                                 <field name="age_group_id"/>
                             </group>
                         </group>
-                        <group colspan="6">
-                             <group>
+                        <group colspan="6" string="Grouping And Graphs">
+                            <group string="Report Sheets And Ordering">
                                 <field name="group_by"/>
-                                <field name="chart"/>
                                 <field name="ignore_date"/>
                             </group>
+                            <group string="Chart Options">
+                                <field name="chart"/>
+                                <field name="filter_chart"/>
+                                <field name="chart_filter_recs"
+                                    attrs="{
+                                        'invisible': [('filter_chart', '=', False)],
+                                        'required': [('filter_chart', '=', True)]
+                                    }"
+                                />
+                                <field name="chart_filter_cond"
+                                    attrs="{
+                                        'invisible': [('filter_chart', '=', False)],
+                                        'required': [('filter_chart', '=', True)]
+                                    }"
+                                />
+                            </group>
+                        </group>
+                        <group colspan="6" string="Report Settings">
                             <group>
                                 <field name="file_name"/>
                             </group>

@@ -5,7 +5,7 @@ from odoo import exceptions
 import pytz
 from dateutil.relativedelta import relativedelta
 import datetime
-import xlwt
+#import xlwt
 from xlsxwriter.workbook import Workbook
 from io import BytesIO
 import base64
@@ -54,9 +54,23 @@ class exel_export_wiz(models.TransientModel):
             ('age_group_id', 'Age'),
         ], string="Charts For"
     )
-    ignore_date = fields.Boolean('Ignore Date When Sorting')
+    filter_chart = fields.Boolean('Filter Chart Data', default=True)
+    chart_filter_recs = fields.Integer('Applicable If', default=4)
+    chart_filter_cond = fields.Float('Filter Percent', default=1.0)
+    ignore_date = fields.Boolean('Ignore Date When Sorting', default=True)
     file_name = fields.Char('Report Filename', size=64)
     excel_file = fields.Binary('Excel Report')
+    
+    @api.constrains('chart_filter_cond')
+    def _check_value(self):
+        if self.chart_filter_cond >= 25 or self.chart_filter_cond <= 0:
+            raise exceptions.ValidationError(_('Value has to be greater than 0 and less than 25'))
+    
+    @api.onchange('filter_chart')
+    def _onchange_filter_chart(self):
+        if not self.filter_chart:
+            self.chart_filter_recs = 4
+            self.chart_filter_cond = 1.0
     
     @api.onchange(
         'period', 'region_id', 'water_body_id',
@@ -144,15 +158,19 @@ class exel_export_wiz(models.TransientModel):
         res = {}
         if mode == 'm2o':
             for cat in sorted(categories, key=lambda c: c.name):
-                res[cat.name] = list(filter(
+                res[str(cat.name)] = list(filter(
                     lambda r: getattr(r, marker).id == cat.id, records
                 ))
         elif mode == 'date':
             for cat in sorted(categories, key=lambda c: c[0]):
-                res[cat[0].year] = list(filter(
-                    lambda r: r.date >= cat[0] and r.date <= cat[1], records
-                ))
-                
+                if self.env.lang == 'lt_LT':
+                    res[str(cat[0].year) + str(_(' year'))] = list(filter(
+                        lambda r: r.date >= cat[0] and r.date <= cat[1], records
+                    ))
+                else:
+                     res[('year ' + str(cat[0].year))] = list(filter(
+                        lambda r: r.date >= cat[0] and r.date <= cat[1], records
+                    ))
         return res
     
     def get_width(self, string):
@@ -254,16 +272,36 @@ class exel_export_wiz(models.TransientModel):
             )
             # If chart is choosen, draw chart
             if self.chart:
+                # Prepare data for charts
                 chart_data_all = self.categorize(self.chart, sorted_data)
                 chart_data = list(map(
                     lambda i: (i[0], sum(list(map(lambda z: z.quantity, i[1])))),
                     chart_data_all.items()
                 ))
+                # To filter out insignificant entries not to cramp up chart
+                if self.filter_chart and self.chart_filter_cond and \
+                    len(chart_data) > self.chart_filter_recs:
+                    ch_d_total = sum(list(map(lambda l: l[1], chart_data)))
+                    passed_data = list(filter(
+                        lambda l: (l[1] * 100 / ch_d_total) >= self.chart_filter_cond,
+                        chart_data
+                    ))
+                    filtered_out_data = list(filter(
+                        lambda l: (l[1] * 100 / ch_d_total) < self.chart_filter_cond,
+                        chart_data
+                    ))
+                    f_ch_d_total = sum(list(map(lambda l: l[1], filtered_out_data)))
+                    other_tuple = (str(_('Other')), f_ch_d_total)
+                    # Just in case if all data is grouped into Other, or Other is 0
+                    if len(passed_data) == 0 or f_ch_d_total > 0:
+                        passed_data.append(other_tuple)
+                    chart_data = passed_data
+                # Write chart data into sheet
                 worksheet.write(
-                        previous_values['last_row'] + 3, 0, "LABELS", style_header
+                        previous_values['last_row'] + 3, 0, str(_("LABELS")), style_header
                     )
                 worksheet.write(
-                        previous_values['last_row'] + 3, 1, "VALUES", style_header
+                        previous_values['last_row'] + 3, 1, str(_("VALUES")), style_header
                     )
                 for nr, d_tuple in enumerate(chart_data, 1):
                     worksheet.write(
@@ -272,18 +310,59 @@ class exel_export_wiz(models.TransientModel):
                     worksheet.write(
                         nr + previous_values['last_row'] + 3, 1, d_tuple[1], style_main
                     )
-                chart = workbook.add_chart({'type': 'pie'})
+                # Set common variables for charts
                 start_coord = previous_values['last_row'] + 4
                 end_coord = len(chart_data) + previous_values['last_row'] + 3
-                name = dict(self._fields['chart'].selection).get(self.chart) + " Chart"
-                chart.add_series({
-                    'categories': [str(sheet), start_coord, 0, end_coord, 0],
-                    'values': [str(sheet), start_coord, 1, end_coord, 1],
-                    'data_labels': {'value': True, 'series_name': True, 'percentage': True},
-                    'name': name
+                chart_position_pie = 'C' + str(start_coord)
+                chart_position_bar = 'C' + str(start_coord + 30)
+                # untranselted selection field example
+                # dict(self._fields['chart'].selection).get(self.chart)
+                tr_sel_name = dict(self.fields_get(
+                    ["chart"],['selection']
+                )['chart']["selection"]).get(self.chart)
+                prynt(self.env.lang)
+                tr_sel_name_ch_n = tr_sel_name
+                if self.env.lang == 'lt_LT':
+                    if str(tr_sel_name_ch_n).endswith('is') or str(tr_sel_name_ch_n).endswith('ys'):
+                        tr_sel_name_ch_n = tr_sel_name_ch_n[:-2] + 'ių'
+                    elif str(tr_sel_name_ch_n).endswith('as'):
+                        tr_sel_name_ch_n = tr_sel_name_ch_n[:-2] + 'ų'
+                    elif str(tr_sel_name_ch_n).endswith('ius'):
+                        tr_sel_name_ch_n = tr_sel_name_ch_n[:-3] + 'iaus'
+                series_name = str(tr_sel_name)
+                chart_name = str(tr_sel_name_ch_n) + str(_(" Chart"))
+                # Pie chart
+                chart_pie = workbook.add_chart({'type': 'pie'})
+                chart_pie.add_series({
+                    'categories': [sheet, start_coord, 0, end_coord, 0],
+                    'values': [sheet, start_coord, 1, end_coord, 1],
+                    'data_labels': {
+                        'legend_key': True,
+                        'category': True,
+                        'value': True,
+                        'percentage': True
+                    },
+                    'name': series_name
                 })
-                chart_position = 'C' + str(start_coord)
-                worksheet.insert_chart(chart_position, chart)
+                chart_pie.set_title ({'name': chart_name})
+                chart_pie.set_style(10)
+                # Column Chart
+                chart_bar = workbook.add_chart({'type': 'column'})
+                chart_bar.add_series({
+                    'categories': [sheet, start_coord, 0, end_coord, 0],
+                    'values': [sheet, start_coord, 1, end_coord, 1],
+                    'data_labels': {
+                        'value': True
+                    },
+                    'name': series_name
+                })
+                chart_bar.set_title ({'name': chart_name})
+                chart_bar.set_x_axis({'name': series_name})
+                chart_bar.set_y_axis({'name': _('Releases In Thousands')})
+                chart_bar.set_style(11)
+                # Insertation of charts
+                worksheet.insert_chart(chart_position_pie, chart_pie, {'x_scale': 2, 'y_scale': 2})
+                worksheet.insert_chart(chart_position_bar, chart_bar, {'x_scale': 2, 'y_scale': 1})
     
     def export(self):
         releases_obj = self.env['zuvinimas.releases']
@@ -308,7 +387,7 @@ class exel_export_wiz(models.TransientModel):
         # Actual writing of data to excell
         for sheet, data in report_data.items():
             worksheet = workbook.add_worksheet(str(sheet))
-            self.xcell_write(worksheet, data, workbook, sheet)
+            self.xcell_write(worksheet, data, workbook, str(sheet))
         workbook.close()
         self.excel_file = base64.encodestring(buff.getvalue())
         self.file_name = filename

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-08-21 05:56+0000\n"
-"PO-Revision-Date: 2019-08-21 09:14+0300\n"
+"POT-Creation-Date: 2019-08-28 04:08+0000\n"
+"PO-Revision-Date: 2019-08-28 07:12+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt_LT\n"
@@ -14,6 +14,18 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
 "%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. module: zuvinimas
+#: code:addons/zuvinimas/wizard/exel_export_wiz.py:333
+#, python-format
+msgid " Chart"
+msgstr " grafikas"
+
+#. module: zuvinimas
+#: code:addons/zuvinimas/wizard/exel_export_wiz.py:167
+#, python-format
+msgid " year"
+msgstr " metai"
 
 #. module: zuvinimas
 #: model:ir.ui.menu,name:zuvinimas.module_wide_actions
@@ -47,6 +59,11 @@ msgid "Age Groups Of The Species"
 msgstr "Rūšies amžiaus grupės"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__chart_filter_recs
+msgid "Applicable If"
+msgstr "Taikoma jei įrašų daugiau nei"
+
+#. module: zuvinimas
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__area
 msgid "Area In Hectares"
 msgstr "Plotas Hektarais"
@@ -65,6 +82,11 @@ msgstr "Vandens Telkiniai"
 #: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_form_view
 msgid "Cancel"
 msgstr "Atšaukti"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_form_view
+msgid "Chart Options"
+msgstr "Grafikų nustatymai"
 
 #. module: zuvinimas
 #: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__chart
@@ -165,9 +187,24 @@ msgid "Export To Excel"
 msgstr "Eksportuoti į excel"
 
 #. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__filter_chart
+msgid "Filter Chart Data"
+msgstr "Filtruoti duomenis grafikams"
+
+#. module: zuvinimas
 #: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_form_view
 msgid "Filter Data To Export"
 msgstr "Filtruoti duomenis eksportui"
+
+#. module: zuvinimas
+#: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__chart_filter_cond
+msgid "Filter Percent"
+msgstr "Slenkstis duomenų filtravimui %"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_form_view
+msgid "Filters For Data"
+msgstr "Duomenų filtravimas"
 
 #. module: zuvinimas
 #: model:ir.ui.menu,name:zuvinimas.fish_age_groups
@@ -204,6 +241,11 @@ msgid "Group By"
 msgstr "Grupuoti pagal"
 
 #. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_form_view
+msgid "Grouping And Graphs"
+msgstr "Grupavimas ir grafikai"
+
+#. module: zuvinimas
 #: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__id
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_main__id
@@ -220,7 +262,13 @@ msgstr "ID"
 #. module: zuvinimas
 #: model:ir.model.fields,field_description:zuvinimas.field_exel_export_wiz__ignore_date
 msgid "Ignore Date When Sorting"
-msgstr "Negrupuoti pagal datą"
+msgstr "Nerikiuoti pagal datą"
+
+#. module: zuvinimas
+#: code:addons/zuvinimas/wizard/exel_export_wiz.py:301
+#, python-format
+msgid "LABELS"
+msgstr "Pavadinimai"
 
 #. module: zuvinimas
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__image_html
@@ -285,10 +333,16 @@ msgid "Name Of Water Body"
 msgstr "Vandens telkinio pavadinimas"
 
 #. module: zuvinimas
-#: code:addons/zuvinimas/wizard/exel_export_wiz.py:303
+#: code:addons/zuvinimas/wizard/exel_export_wiz.py:382
 #, python-format
 msgid "No Entries Found"
 msgstr "Nerasta įrašų, pagal pasirintus kriterijus"
+
+#. module: zuvinimas
+#: code:addons/zuvinimas/wizard/exel_export_wiz.py:294
+#, python-format
+msgid "Other"
+msgstr "Kiti"
 
 #. module: zuvinimas
 #: selection:exel.export.wiz,chart:0 selection:exel.export.wiz,group_by:0
@@ -370,6 +424,12 @@ msgid "Releases"
 msgstr "Žuvinimai"
 
 #. module: zuvinimas
+#: code:addons/zuvinimas/wizard/exel_export_wiz.py:361
+#, python-format
+msgid "Releases In Thousands"
+msgstr "Žuvinimai tūkstančiais vnt."
+
+#. module: zuvinimas
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_lakes__releases_ids
 msgid "Releases Into Waterbody"
 msgstr "Vandens telkinio žuvinimai"
@@ -398,6 +458,16 @@ msgstr "Ataskaitos failo pavadinimas"
 #: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_result_form_view
 msgid "Report Result"
 msgstr "Ataskaitos rezultatas"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_form_view
+msgid "Report Settings"
+msgstr "Ataskaitos nustatymai"
+
+#. module: zuvinimas
+#: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_form_view
+msgid "Report Sheets And Ordering"
+msgstr "Ataskaitos skiltys ir rikiavimas"
 
 #. module: zuvinimas
 #: model_terms:ir.ui.view,arch_db:zuvinimas.excel_export_wiz_result_form_view
@@ -499,6 +569,18 @@ msgstr "Viso įžuvinta"
 #: model:ir.model.fields,field_description:zuvinimas.field_zuvinimas_regions__total_wb_area
 msgid "Total Waterbody Area"
 msgstr "Visų vandens telkinių plotas"
+
+#. module: zuvinimas
+#: code:addons/zuvinimas/wizard/exel_export_wiz.py:304
+#, python-format
+msgid "VALUES"
+msgstr "Reikšmės"
+
+#. module: zuvinimas
+#: code:addons/zuvinimas/wizard/exel_export_wiz.py:67
+#, python-format
+msgid "Value has to be greater than 0 and less than 25"
+msgstr "Reikšmė turi būti didesnė už 0 ir mažesnė nei 25"
 
 #. module: zuvinimas
 #: model_terms:ir.ui.view,arch_db:zuvinimas.regions_form
