@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<templates>
+    <t t-name="geometer.geomap_widget_template" xml:space="preserve">
+        <p id="geomap_total_dist"></p>
+        <div id="geomap" style="width:100%;height:400px;"></div>
+        <button id="clear_last_geomap" class="btn-secondary">Clear Last Marker</button>
+        <button id="clear_geomap" class="btn-secondary">Clear Map Markers</button>
+        <button id="read_geomap" class="btn-secondary">Load Markers</button>
+        <button id="create_geomap_lines" class="btn-primary">Save Markers</button>
+    </t>
+</templates>
+
+

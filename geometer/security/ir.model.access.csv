@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_geometer_geometer,geometer.geometer,model_geometer_geometer,base.group_user,1,1,1,1
+access_geometer_settings,geometer.settings,model_geometer_settings,base.group_user,1,1,1,1
+access_geometer_location,geometer.location,model_geometer_location,base.group_user,1,1,1,1
+access_geometer_location_marker,geometer.location.marker,model_geometer_location_marker,base.group_user,1,1,1,1

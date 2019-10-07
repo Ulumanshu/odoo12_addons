@@ -1,0 +1,28 @@
+<odoo>
+  <data>
+   
+    <!-- Top menu item -->
+    
+    <menuitem name="geometer" id="menu_root"/>
+    
+    <!-- menu categories -->
+    
+    <menuitem name="Geometer" id="menu_geometer" parent="menu_root"/>
+    <menuitem name="Settings" id="menu_settings" parent="menu_root"/>
+    
+    
+    <menuitem name="Collections" id="menu_geometer_form"
+              parent="menu_geometer"
+              action="geometer_action_window"/>
+    <menuitem name="Locations" id="menu_geometer_location_list"
+              parent="menu_geometer"
+              action="geometer_location_action_window"/>
+    <menuitem name="Map Api Settings" id="menu_geometer_settings_form"
+              parent="menu_settings"
+              action="geometer_settings_action_window"/>
+              
+<!--    <menuitem name="Server to list" id="geoemeter" parent="geoemeter.menu_2"-->
+<!--              action="geoemeter.action_server"/>-->
+    
+  </data>
+</odoo>

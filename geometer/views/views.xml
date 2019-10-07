@@ -1,0 +1,145 @@
+<odoo>
+  <data>
+    
+    <record model="ir.ui.view" id="geometer_list">
+        <field name="name">geometer list</field>
+        <field name="model">geometer.geometer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="location_ids"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="geometer_form">
+        <field name="name">geometer form</field>
+        <field name="model">geometer.geometer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="location_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="geometer_location_list">
+        <field name="name">geometer.location list</field>
+        <field name="model">geometer.location</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="mainframe_id"/>
+                <field name="center_lat"/>
+                <field name="center_lng"/>
+                <field name="zoom"/>
+                <field name="total_distance"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="geometer_location_form">
+        <field name="name">geometer.location form</field>
+        <field name="model">geometer.location</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group colspan="20">
+                        <h2>
+                            <field name="name"/>
+                        </h2>
+                    </group>
+                    <widget name="GEOMAPSHOW" options="{}"/>
+                    <group colspan="4">
+                        <field name="total_distance"/>
+                    </group>
+                    <notebook>
+                        <page name="Markers" string="Markers">
+                            <field name="marker_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="sequence"/>
+                                    <field name="lat"/>
+                                    <field name="lng"/>
+                                    <field name="distance"/>
+                                    <field name="distance_start"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page name="Location Settings" string="Location Settings">
+                            <group>
+                                <field name="mainframe_id"/>
+                                <field name="center_lat"/>
+                                <field name="center_lng"/>
+                                <field name="zoom"/>
+                                <field name="total_distance"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="geometer_settings_form">
+        <field name="name">geometer.settings form</field>
+        <field name="model">geometer.settings</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="name"/>
+                    <group>
+                        <field name="api_key"/>
+                        <field name="api_url1"/>
+                        <field name="center_lat"/>
+                        <field name="center_lng"/>
+                        <field name="zoom"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- actions opening views on models -->
+    
+    <record model="ir.actions.act_window" id="geometer_action_window">
+      <field name="name">geometer window</field>
+      <field name="res_model">geometer.geometer</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="geometer_location_action_window">
+      <field name="name">geometer location window</field>
+      <field name="res_model">geometer.location</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="geometer_settings_action_window">
+      <field name="name">geometer settings window</field>
+      <field name="res_model">geometer.settings</field>
+      <field name="view_mode">form</field>
+      <field name="res_id" ref="main_settings_obj"/>
+    </record>
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="geometer.action_server">
+      <field name="name">geometer server</field>
+      <field name="model_id" ref="model_geometer_geometer"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+  </data>
+</odoo>
