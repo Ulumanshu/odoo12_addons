@@ -174,12 +174,13 @@ class zuvinimas_lakes(models.Model):
             url = 'https://www.google.com/maps/embed/v1/search?key=%s&q=%s' % (api_key, query)
             template = self.env.ref('zuvinimas.lake_location')
             rec.image_html = template.render({ 'url' : url })
+    
     name = fields.Char("Name Of Water Body", required=True, translate=True)
     image_html = fields.Html(
         "Lake Image",
         compute=_get_default_map_image,
-         sanitize=False,
-         strip_style=False
+        sanitize=False,
+        strip_style=False
     )
     g_query = fields.Char("Query For Google Maps")
     correct_map = fields.Boolean("Correct Map")
