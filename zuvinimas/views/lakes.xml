@@ -10,6 +10,7 @@
             <tree>
                 <field name="name"/>
                 <field name="region_id"/>
+                <field name="area" sum="Total Area"/>
                 <field name="release_count" readonly="1"/>
             </tree>
         </field>
