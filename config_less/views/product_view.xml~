@@ -18,7 +18,7 @@
       <field name="inherit_id" ref="stock.product_template_form_view_procurement_button" />
       <field name="arch" type="xml">
           <xpath expr="//button[@name='action_open_quants']" position="attributes">
-              <attribute name="attrs">{'invisible': False}</attribute>
+              <field name="country_of_origin_id"/>
           </xpath>
       </field>
     </record>
